@@ -1,0 +1,5 @@
+ 1090  mkdir new_folder
+ 1091  whoami
+ 1092  rm -r new_folder/
+ 1093  echo Hello
+ 1094  history | tail -n 5 > ~/week01/ex2.txt
