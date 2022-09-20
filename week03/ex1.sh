@@ -1,2 +1,2 @@
-gcc ex1.c -o ex1 -w
+gcc -w ex1.c -o ex1
 ./ex1

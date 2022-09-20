@@ -19,7 +19,7 @@ int main()
     double AB = distance(A,B);
     double ABC = area(A,B,C);
 
-    printf("%f %f",AB,ABC);
+    printf("%f %f\n",AB,ABC);
     return 0;
 }
 
