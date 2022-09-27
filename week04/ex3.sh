@@ -7,6 +7,6 @@ pstree $$
 sleep 5
 pstree $$
 sleep 5
-./ex3.o 5 &
+./ex3 5 &
 sleep 22
 pstree $$
