@@ -1,0 +1,46 @@
+Initially, after starting the program, a single process named "ex3" is created. 
+
+sh─┬─ex3.o
+   └─pstree
+
+When execution reaches the first fork() within the loop, the initial process duplicates. After running the pstree command we see that the original process "ex3" (main) has one child "ex3" (child 1). The instructions following fork() will be executed in each of the two processes (it is not known in which order they will be executed). sleep(5) will allow to fix the configuration of the tree as it is for 5 seconds:
+
+sh─┬─ex3.o───ex3.o
+   └─pstree
+
+On the next iteration of the loop, fork() will be executed for each of the two processes "ex3", they are both duplicates. This will result in 4 processes "ex3": the original process (main), its two children (child 1 & child 2) and the child of its first child (child 1.1). sleep(5) will allow to fix the configuration of the tree like this for 5 seconds:
+
+sh─┬─ex3.o─┬─ex3.o───ex3.o
+   │       └─ex3.o
+   └─pstree
+
+On the last iteration of the loop, fork() will be executed for each of the four processes "ex3", all processes duplicates. This will result in 8 "ex3" processes: the original process (main), three of its children (child 1, child 2 & child 3), two children of its first child (child 1.1 & child 1.2), one child of its second child (child 2.1) and one child of the first child of the first child of the initial process (child 1.1.1). sleep(5) will fix the configuration of the tree like this for 5 seconds:
+
+sh─┬─ex3.o─┬─ex3.o─┬─ex3.o───ex3.o
+   │       │       └─ex3.o
+   │       ├─ex3.o───ex3.o
+   │       └─ex3.o
+   └─pstree
+
+Thus, each time fork() is launched, all existing processes will be duplicated and the number becomes 2^n, where n is the number of processes launched by fork().
+The total number of processes (before all instructions are executed) for 3 iterations (3 fork()) equals 8.
+
+If we run 5 iterations, the total number of processes (before all instructions are finished) is 32, because for each iteration the total number of processes will be 2^5. Otherwise, the work of this program is similar to the previous one.
+
+sh─┬─ex3.o─┬─ex3.o─┬─ex3.o─┬─ex3.o─┬─ex3.o───ex3.o
+   │       │       │       │       └─ex3.o
+   │       │       │       ├─ex3.o───ex3.o
+   │       │       │       └─ex3.o
+   │       │       ├─ex3.o─┬─ex3.o───ex3.o
+   │       │       │       └─ex3.o
+   │       │       ├─ex3.o───ex3.o
+   │       │       └─ex3.o
+   │       ├─ex3.o─┬─ex3.o─┬─ex3.o───ex3.o
+   │       │       │       └─ex3.o
+   │       │       ├─ex3.o───ex3.o
+   │       │       └─ex3.o
+   │       ├─ex3.o─┬─ex3.o───ex3.o
+   │       │       └─ex3.o
+   │       ├─ex3.o───ex3.o
+   │       └─ex3.o
+   └─pstree
