@@ -1,0 +1,5 @@
+Unlike the program in ex3.c, the program in ex4.c creates a lock around some code sections (critical regions). Thus, to prevent two threads from checking the same number, the part of the code calling get_number_to_check() is placed inside the mutex lock, as well as the part that increments the current number of prime numbers.
+
+But for example the part of code calling the function for prime number check is quite long, so it is not put into mutex lock, which allows different threads to call this function (for their own number) in parallel.
+
+As in the ex3.c program, multiple threads execute the function faster than one for a computer with 2 cores. But since it is impossible to predict exactly how long each individual thread will take to execute, when the number increases, the total execution time of the program may a little bit increase. The final result is independent of the number of threads.

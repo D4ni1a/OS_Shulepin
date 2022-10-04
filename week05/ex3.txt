@@ -1,0 +1,10 @@
+664579
+1 thread runs 10s
+664579
+2 threads run 6s
+664579
+4 threads run 6s
+664579
+10 threads run 5s
+664579
+100 threads run 5s

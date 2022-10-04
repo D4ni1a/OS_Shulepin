@@ -1,0 +1,5 @@
+During the execution of the program, the interval [0;n) is divided into several subintervals of equal length (except maybe the last one). When a separate thread is created on each of these intervals, the amount of prime numbers is counted. The intervals for each individual thread do not overlap. 
+
+The main process waits until each individual thread completes the number search on its own interval. The number found is written to an array, and then summed up to get the total number of prime numbers.
+
+Since two threads run in parallel on a computer with two cores, the result for a running program with two threads works about two times faster than with one thread. But since it is impossible to predict exactly how long each individual thread will run, when the number of threads is increased, the total execution time of the program may slightly increase. The final result does not depend on the number of threads.

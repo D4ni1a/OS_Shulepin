@@ -1,0 +1,1 @@
+gcc -w -pthread -Wall ex2.c -o ex2 && ./ex2 5
