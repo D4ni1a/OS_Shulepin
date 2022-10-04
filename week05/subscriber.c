@@ -3,6 +3,11 @@
 #include <fcntl.h>
 #include <unistd.h>
 
+/*
+Better to input new data after the subscriber will output the preveous one
+Otherwise, subscribers will output only the last input message
+*/
+
 int main(int argc, char *argv[]) {
     int fd;
     char *myfifo = "/tmp/ex1";
