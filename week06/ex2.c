@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <stdlib.h>
 
 typedef struct {
     unsigned int id;
@@ -13,7 +12,8 @@ typedef struct {
 
 void swap(Process *xp, Process *yp);
 
-void bubble_sort(Process arr[], unsigned int n);
+void bubble_sort_arrival(int start, int finish, Process arr[]);
+void bubble_sort_burst(int start, int finish, Process arr[], int n);
 
 int main() {
     unsigned int n;
@@ -35,24 +35,41 @@ int main() {
         jobs[i].burst_time = m;
 
         jobs[i].id = i;
+
+        jobs[i].waiting_time = 0;
+        jobs[i].turnaround_time = 0;
         jobs[i].start_time = jobs[i].arrival_time;
     }
 
-    bubble_sort(jobs, n);
+    bubble_sort_arrival(0, n-1, jobs);
 
+
+    int ind1, ind2;
     for (int i = 0; i < n; i++) {
-        if (i!=0)
+        if (i==0){
+            jobs[i].complete_time = jobs[i].start_time + jobs[i].burst_time;
+            jobs[i].turnaround_time = jobs[i].complete_time - jobs[i].arrival_time;
+            jobs[i].waiting_time = jobs[i].start_time - jobs[i].arrival_time;
+        }
+        else{
+            ind1 = i; ind2 = i;
+            for (int j = i; j<n;j++){
+                if (jobs[j].arrival_time > jobs[i-1].complete_time) break;
+                ind2 = j;
+            }
+            bubble_sort_burst(ind1, ind2, jobs, n);
             if (jobs[i-1].complete_time > jobs[i].arrival_time)
                 jobs[i].start_time = jobs[i-1].complete_time;
             else
                 jobs[i].start_time = jobs[i].arrival_time;
-        jobs[i].complete_time = jobs[i].start_time + jobs[i].burst_time;
-        jobs[i].turnaround_time = jobs[i].complete_time - jobs[i].arrival_time;
-        jobs[i].waiting_time = jobs[i].start_time - jobs[i].arrival_time;
-
+            jobs[i].complete_time = jobs[i].start_time + jobs[i].burst_time;
+            jobs[i].turnaround_time = jobs[i].complete_time - jobs[i].arrival_time;
+            jobs[i].waiting_time = jobs[i].start_time - jobs[i].arrival_time;
+        }
         average_turnaround += jobs[i].turnaround_time;
         average_waiting += jobs[i].waiting_time;
     }
+
 
     average_waiting/=(double)n;
     average_turnaround/=(double)n;
@@ -79,9 +96,16 @@ void swap(Process *xp, Process *yp) {
     *yp = temp;
 }
 
-void bubble_sort(Process arr[], unsigned int n) {
-    for (int i = 0; i < n - 1; i++)
-        for (int j = 0; j < n - i - 1; j++)
+void bubble_sort_arrival(int start, int finish, Process arr[]) {
+    for (int i = 0; i < finish - start; i++)
+        for (int j = start; j < finish - i; j++)
             if (arr[j].arrival_time > arr[j + 1].arrival_time)
+                swap(&arr[j], &arr[j + 1]);
+}
+
+void bubble_sort_burst(int start, int finish, Process arr[], int n) {
+    for (int i = 0; i < finish - start; i++)
+        for (int j = start; j < finish - i; j++)
+            if (arr[j].burst_time > arr[j + 1].burst_time)
                 swap(&arr[j], &arr[j + 1]);
 }

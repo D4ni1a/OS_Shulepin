@@ -1,0 +1,32 @@
+Comparing the output of the RR algorithm with the FCFS and SJF algorithms, one can notice that the average turnaround time and average waiting time strongly depend on the selected quantum value. In some cases RR has average turnaround time and average waiting time less than FCFS, in some cases more - it all depends on quantum. But in general the average turnaround time and average waiting time of RR is greater than those of SJF.
+
+Example:
+Arrival time: 0 9 5 7 6 3 14
+Burst time: 2 2 2 1 3 7 2
+
+Average turnaround time FCFS: 7
+Average waiting time FCFS: 4.29
+Average turnaround time SJF: 6.29
+Average waiting time SJF: 3.57
+Average turnaround time RR (quantum = 1): 6.71
+Average waiting time RR (quantum = 1): 4
+Average turnaround time RR (quantum = 4): 6.57
+Average waiting time RR (quantum = 4): 3.86
+
+RR becomes more efficient than FCFS when there are processes with different burst times (the number of long ones is approximately equal to the number of fast ones). But if processes have roughly equal burst times, RR starts to become less efficient than FCFS.
+
+Example:
+Arrival time: 1 2 3
+Burst time: 8 8 7
+
+Average FCFS turnaround time: 14.67
+Average waiting time FCFS: 7
+Average turnaround time SJF: 14.33
+Average waiting time SJF: 6.67
+Average turnaround time RR (quantum = 1): 21
+Average waiting time RR (quantum = 1): 13.33
+
+Nevertheless, SJF was better in all the examples.
+
+
+Translated with www.DeepL.com/Translator (free version)
