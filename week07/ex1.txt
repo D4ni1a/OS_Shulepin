@@ -1,0 +1,2 @@
+   text	   data	    bss	    dec	    hex	filename
+   1646	    600	     16	   2262	    8d6	./ex1
