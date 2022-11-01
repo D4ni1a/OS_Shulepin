@@ -1,0 +1,6 @@
+For 8 KB page we have least significant 13 bits as offset.
+So, the most significant 16 - 13 = 3 bits are for page numbers.
+It's 2^3 = 8 pages.
+As we have single-level linear page table, it's 1 entry for each page. 8 entries at all.
+
+Answer: 8.

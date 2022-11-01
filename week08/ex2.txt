@@ -1,0 +1,3 @@
+si and so are always 0.
+We have enough space to store everything in Main memory, so we don't exceed it while allocating space (10 times * 10 MB = 100 MB)
+For the same reason swpd is 0 too

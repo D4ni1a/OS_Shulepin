@@ -1,0 +1,6 @@
+A physical address is an address inside the real physical memory of some storage device.
+A virtual address is an address inside an infinitely large virtual memory 
+which is used to run programs which exceed the size of physical memory by moving pieces of address space between main memory and disk.
+
+When a program runs, it occupies some virtual memory space that is specific to each program.
+The OS is able to map the addresses of one memory to another.
