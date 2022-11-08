@@ -11,3 +11,4 @@ For the same sequences run with 10 page frames and 8 bits per counter:
 This happens because one and two occur three times for the first sequence, and they have such an order that by the time they are called again, they are already contained in page frames. In the second sequence, however, by the time they are called again, any corresponding page is already contained in page frames, resulting in a lower number of misses.
 
 Changing the number of bits for counter can also affect the result
+For example, for sequence 1 2 3 4 5 6 7 2 3 4 5 1 7 with 6 page frames and 4 bits in the counter, Hit/Miss rate is 0.444. And for the same sequence with 6 page frames and 8 bits in the counter - 0.625.
