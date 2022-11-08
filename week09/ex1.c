@@ -30,7 +30,7 @@ int main() {
     }
 
     FILE *open;
-    open = fopen("input.txt","r");
+    open = fopen("Lab 09 input.txt","r");
 
     int element;
     int hits = 0;
