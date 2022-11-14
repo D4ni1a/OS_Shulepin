@@ -1,0 +1,9 @@
+660: 6 -> 110 <=> ++- permissions for owner
+     6 -> 110 <=> ++- permissions for group
+     0 -> 000 <=> --- permissions for others
+775: 7 -> 111 <=> +++ permissions for owner
+     7 -> 111 <=> +++ permissions for group
+     5 -> 101 <=> +-+ permissions for others
+777: 7 -> 110 <=> +++ permissions for owner
+     7 -> 110 <=> +++ permissions for group
+     7 -> 000 <=> +++ permissions for others
