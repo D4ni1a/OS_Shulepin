@@ -14,8 +14,6 @@ int main() {
     struct dirent *entry;
 
     map *dictionary = (map *) malloc(1 * sizeof(map));
-    FILE *file;
-    file = fopen("./ex4.txt", "a");
 
     dir = opendir("./tmp");
     if (!dir) {
@@ -63,33 +61,30 @@ int main() {
         }
     };
 
-    closedir(dir);
     ind--;
-//    fprintf(file,"File ---- Hard Links\n");
+    closedir(dir);
     printf("File ---- Hard Links\n");
+
     for (int j = 0; j < ind; j++) {
         if ((dictionary + j)->value >= 2) {
             for (int k = 0; k < (dictionary + j)->value; k++) {
-//                fprintf(file,"%s ---- ", (dictionary + j)->names[k]);
                 printf("%s ---- ", (dictionary + j)->names[k]);
                 for (int l = 0; l < (dictionary + j)->value; l++) {
                     if (l != (dictionary + j)->value-1)
-//                        fprintf(file,"%s, ", (dictionary+j)->names[l]);
                         printf("%s, ", (dictionary+j)->names[l]);
                     else
-//                        fprintf(file,"%s\n", (dictionary+j)->names[l]);
                         printf("%s\n", (dictionary+j)->names[l]);
                 }
             }
         }
     }
 
+
     for (int j = 0; j < ind; j++){
         free((dictionary + j)->names);
     }
 
     free(dictionary);
-    free(dir);
     free(entry);
 
     return 0;
