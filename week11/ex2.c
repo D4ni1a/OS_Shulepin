@@ -19,4 +19,4 @@ int main() {
     free(entry);
 
     return 0;
-};
+}
