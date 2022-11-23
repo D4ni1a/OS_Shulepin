@@ -1,0 +1,39 @@
+Content of new root (lofsdisk):
+Content of the root directory:
+file2
+..
+file1
+.
+ex2.out
+bin
+
+Content of real root (/):
+Content of the root directory:
+opt
+new.txt
+root
+lost+found
+proc
+..
+lib32
+libx32
+tmp
+media
+lib
+swapfile
+cdrom
+.
+srv
+sbin
+run
+var
+sys
+boot
+home
+usr
+mnt
+dev
+lib64
+bin
+etc
+snap
