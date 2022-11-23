@@ -1,5 +1,7 @@
 sh ex1.sh
 
+sudo chown "$USER":"$USER" lofsdisk
+
 echo "Danila" > lofsdisk/file1
 echo "Shulepin" > lofsdisk/file2
 

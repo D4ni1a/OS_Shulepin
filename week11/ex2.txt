@@ -1,11 +1,12 @@
 Content of new root (lofsdisk):
 Content of the root directory:
+bin
+lost+found
 file2
-..
-file1
 .
 ex2.out
-bin
+..
+file1
 
 Content of real root (/):
 Content of the root directory:

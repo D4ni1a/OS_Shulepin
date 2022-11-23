@@ -17,3 +17,4 @@ mkdir lofsdisk
 freeloop=$(sudo losetup -f)
 sudo losetup $freeloop lofs.img
 sudo mkfs.ext4 $freeloop
+sudo mount --types ext4 $freeloop lofsdisk
